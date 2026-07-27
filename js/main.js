@@ -175,7 +175,7 @@
     mobileMenu.setAttribute('aria-hidden', String(!open));
     mobileToggle.setAttribute('aria-expanded', String(open));
     mobileToggle.setAttribute('aria-label', text(open ? 'menu.close' : 'menu.open'));
-    body.classList.toggle('is-locked', open && window.innerWidth <= 720);
+    body.classList.toggle('is-locked', open && window.innerWidth <= 1080);
   };
 
   mobileToggle?.addEventListener('click', () => {
@@ -197,7 +197,7 @@
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 720) setMobileMenu(false);
+    if (window.innerWidth > 1080) setMobileMenu(false);
   });
 
   const navLinks = [...document.querySelectorAll('[data-nav-link]')];

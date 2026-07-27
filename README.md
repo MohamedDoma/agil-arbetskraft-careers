@@ -17,3 +17,7 @@ No build command is required. Deploy the repository root to Vercel using the `Ot
 
 ## Cookie banner fix
 The cookie choice buttons now reliably close the banner in Vercel and when testing the site directly through `file://`.
+
+Latest fix:
+- Replaced the handmade center mark with the official white Agil Arbetskraft symbol from the client brand package.
+- Reworked tablet/mobile responsive layout and moved the navigation collapse breakpoint to 1080px.

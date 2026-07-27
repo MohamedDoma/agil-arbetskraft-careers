@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Hitta lediga tjänster hos Agil Arbetskraft inom IT, lager och logistik, bygg, transport samt flytt och montage.">
+  <meta name="description" content="Hitta lediga tjänster hos Agil Arbetskraft inom IT, lager och logistik, bygg, transport samt flytt och montage." data-i18n-content="meta.description">
   <meta name="theme-color" content="#FAA632">
   <title>Jobb hos Agil Arbetskraft</title>
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
@@ -14,22 +14,36 @@
 </head>
 <body id="start">
   <header class="site-header" data-header>
-    <div class="header-inner">
-      <button class="menu-trigger" type="button" data-menu-open aria-label="Öppna karriärmenyn" aria-expanded="false">
-        <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>KARRIÄRMENY</span>
-      </button>
-
-      <a class="brand" href="#start" aria-label="Agil Arbetskraft – startsida">
+    <div class="header-shell">
+      <a class="brand" href="#start" aria-label="Agil Arbetskraft – startsida" data-i18n-aria="brand.home">
         <img src="assets/logo.svg" alt="Agil Arbetskraft">
       </a>
 
+      <nav class="desktop-nav" aria-label="Huvudmeny" data-i18n-aria="nav.mainLabel">
+        <a class="is-active" href="#start" data-nav-link data-i18n="nav.home">Start</a>
+        <a href="#jobb" data-nav-link data-i18n="nav.jobs">Jobb</a>
+        <a href="#medarbetare" data-nav-link data-i18n="nav.employees">Medarbetare</a>
+        <a href="#avdelningar" data-nav-link data-i18n="nav.departments">Avdelningar</a>
+      </nav>
+
       <div class="header-actions">
-        <a class="header-connect" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer">Connecta</a>
-        <button class="share-button" type="button" data-share aria-label="Dela sidan">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0-11 4 4m-4-4L8 8M5 12v7h14v-7"/></svg>
+        <button class="language-toggle" type="button" data-language-toggle aria-label="Byt till engelska" title="English">
+          <span class="language-flag" data-language-flag aria-hidden="true">🇬🇧</span>
+          <span class="language-code" data-language-code>EN</span>
+        </button>
+        <a class="header-connect" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer" data-i18n="common.connect">Connecta</a>
+        <button class="mobile-menu-button" type="button" data-mobile-menu-toggle aria-label="Öppna menyn" aria-expanded="false">
+          <span></span><span></span><span></span>
         </button>
       </div>
+
+      <nav class="mobile-menu" data-mobile-menu aria-label="Mobilmeny" aria-hidden="true" data-i18n-aria="nav.mobileLabel">
+        <a class="is-active" href="#start" data-nav-link data-mobile-menu-link data-i18n="nav.home">Start</a>
+        <a href="#jobb" data-nav-link data-mobile-menu-link data-i18n="nav.jobs">Jobb</a>
+        <a href="#medarbetare" data-nav-link data-mobile-menu-link data-i18n="nav.employees">Medarbetare</a>
+        <a href="#avdelningar" data-nav-link data-mobile-menu-link data-i18n="nav.departments">Avdelningar</a>
+        <a class="mobile-connect" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer" data-i18n="common.connect">Connecta</a>
+      </nav>
     </div>
   </header>
 
@@ -40,40 +54,40 @@
 
       <div class="container">
         <div class="hero-copy reveal">
-          <div class="eyebrow"><span></span> JOBBA MED OSS</div>
-          <h1>Vilken tjänst<br><em>söker du?</em></h1>
-          <p>Välj ett område och hitta din nästa möjlighet hos Agil Arbetskraft.</p>
+          <div class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text" data-i18n="hero.eyebrow">JOBBA MED OSS</span></div>
+          <h1 data-i18n-html="hero.title">Vilken tjänst<br><em>söker du?</em></h1>
+          <p data-i18n="hero.description">Välj ett område och hitta din nästa möjlighet hos Agil Arbetskraft.</p>
         </div>
 
         <div class="career-grid" id="avdelningar">
-          <a class="career-card reveal" href="https://jobb.agilarbetskraft.se/jobs?department=IT&amp;query=" target="_blank" rel="noreferrer" aria-label="Visa lediga jobb inom IT">
-            <img src="assets/it.webp" alt="Person som arbetar vid en laptop inom IT">
+          <a class="career-card reveal" href="https://jobb.agilarbetskraft.se/jobs?department=IT&amp;query=" target="_blank" rel="noreferrer" aria-label="Visa lediga jobb inom IT" data-i18n-aria="cards.itAria">
+            <img src="assets/it.webp" alt="Person som arbetar vid en laptop inom IT" data-i18n-alt="cards.itAlt">
             <span class="card-accent" aria-hidden="true"></span>
-            <span class="card-action">Se jobb <b>↗</b></span>
+            <span class="card-action"><span data-i18n="cards.viewJobs">Se jobb</span> <b>↗</b></span>
           </a>
 
-          <a class="career-card reveal" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer" aria-label="Connecta för framtida jobb inom lager och logistik">
-            <img src="assets/logistik.webp" alt="Flyttpersonal som lastar lådor vid en lastbil">
+          <a class="career-card reveal" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer" aria-label="Connecta för framtida jobb inom lager och logistik" data-i18n-aria="cards.logisticsAria">
+            <img src="assets/logistik.webp" alt="Flyttpersonal som lastar lådor vid en lastbil" data-i18n-alt="cards.logisticsAlt">
             <span class="card-accent" aria-hidden="true"></span>
-            <span class="card-action">Connecta <b>↗</b></span>
+            <span class="card-action"><span data-i18n="common.connect">Connecta</span> <b>↗</b></span>
           </a>
 
-          <a class="career-card reveal" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer" aria-label="Connecta för framtida jobb inom bygg">
-            <img src="assets/bygg.webp" alt="Byggarbetare i hjälm på en arbetsplats">
+          <a class="career-card reveal" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer" aria-label="Connecta för framtida jobb inom bygg" data-i18n-aria="cards.constructionAria">
+            <img src="assets/bygg.webp" alt="Byggarbetare i hjälm på en arbetsplats" data-i18n-alt="cards.constructionAlt">
             <span class="card-accent" aria-hidden="true"></span>
-            <span class="card-action">Connecta <b>↗</b></span>
+            <span class="card-action"><span data-i18n="common.connect">Connecta</span> <b>↗</b></span>
           </a>
 
-          <a class="career-card reveal" href="https://jobb.agilarbetskraft.se/jobs?department=Transport&amp;query=" target="_blank" rel="noreferrer" aria-label="Visa lediga jobb inom transport">
-            <img src="assets/transport.webp" alt="Lastbil på väg i solnedgång">
+          <a class="career-card reveal" href="https://jobb.agilarbetskraft.se/jobs?department=Transport&amp;query=" target="_blank" rel="noreferrer" aria-label="Visa lediga jobb inom transport" data-i18n-aria="cards.transportAria">
+            <img src="assets/transport.webp" alt="Lastbil på väg i solnedgång" data-i18n-alt="cards.transportAlt">
             <span class="card-accent" aria-hidden="true"></span>
-            <span class="card-action">Se jobb <b>↗</b></span>
+            <span class="card-action"><span data-i18n="cards.viewJobs">Se jobb</span> <b>↗</b></span>
           </a>
 
-          <a class="career-card reveal" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer" aria-label="Connecta för framtida jobb inom flytt och montage">
-            <img src="assets/flytt.webp" alt="Flyttpersonal som bär möbler">
+          <a class="career-card reveal" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer" aria-label="Connecta för framtida jobb inom flytt och montage" data-i18n-aria="cards.movingAria">
+            <img src="assets/flytt.webp" alt="Flyttpersonal som bär möbler" data-i18n-alt="cards.movingAlt">
             <span class="card-accent" aria-hidden="true"></span>
-            <span class="card-action">Connecta <b>↗</b></span>
+            <span class="card-action"><span data-i18n="common.connect">Connecta</span> <b>↗</b></span>
           </a>
         </div>
       </div>
@@ -82,10 +96,10 @@
     <section class="future-section" id="connect">
       <div class="container future-inner">
         <div class="future-copy reveal">
-          <div class="eyebrow eyebrow--dark"><span></span> FRAMTIDA MÖJLIGHETER</div>
-          <h2>Hittar du inte tjänsten du önskar?</h2>
-          <p>Inget ledigt för dig? Eller är du nyfiken och spanar för framtiden? Connecta med oss, så hör vi av oss så snart vi har en tjänst ledig som du kan vara intresserad av.</p>
-          <a class="button button--dark" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer">Connecta med oss <span>↗</span></a>
+          <div class="eyebrow eyebrow--dark"><span class="eyebrow-line" aria-hidden="true"></span><span class="eyebrow-text" data-i18n="future.eyebrow">FRAMTIDA MÖJLIGHETER</span></div>
+          <h2 data-i18n="future.title">Hittar du inte tjänsten du önskar?</h2>
+          <p data-i18n="future.description">Inget ledigt för dig? Eller är du nyfiken och spanar för framtiden? Connecta med oss, så hör vi av oss så snart vi har en tjänst ledig som du kan vara intresserad av.</p>
+          <a class="button button--dark" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer"><span data-i18n="future.button">Connecta med oss</span> <span>↗</span></a>
         </div>
 
         <div class="future-mark reveal" aria-hidden="true">
@@ -97,10 +111,10 @@
     <section class="connect-strip">
       <div class="container connect-strip-inner reveal">
         <div>
-          <span>Din nästa möjlighet kan vara närmare än du tror.</span>
-          <strong>Skapa din kandidatprofil redan idag.</strong>
+          <span data-i18n="strip.kicker">Din nästa möjlighet kan vara närmare än du tror.</span>
+          <strong data-i18n="strip.title">Skapa din kandidatprofil redan idag.</strong>
         </div>
-        <a class="button" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer">Connecta för framtida möjligheter <span>→</span></a>
+        <a class="button" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer"><span data-i18n="strip.button">Connecta för framtida möjligheter</span> <span>→</span></a>
       </div>
     </section>
   </main>
@@ -109,56 +123,37 @@
     <div class="container">
       <div class="footer-top">
         <a class="footer-brand" href="#start"><img src="assets/logo.svg" alt="Agil Arbetskraft"></a>
-        <p>Bemanning och rekrytering för svenska företag. Rätt personal, i rätt tid.</p>
+        <p data-i18n="footer.description">Bemanning och rekrytering för svenska företag. Rätt personal, i rätt tid.</p>
       </div>
 
-      <nav class="footer-nav" aria-label="Sidfotsmeny">
-        <a href="#start">Start</a>
-        <a href="#jobb">Jobb</a>
-        <a href="#medarbetare">Medarbetare</a>
-        <a href="#avdelningar">Avdelningar</a>
-        <a href="https://jobb.agilarbetskraft.se/privacy-policy" target="_blank" rel="noreferrer">Data och integritet</a>
-        <button type="button" data-cookie-open>Hantera cookies</button>
+      <nav class="footer-nav" aria-label="Sidfotsmeny" data-i18n-aria="footer.navLabel">
+        <a href="#start" data-i18n="nav.home">Start</a>
+        <a href="#jobb" data-i18n="nav.jobs">Jobb</a>
+        <a href="#medarbetare" data-i18n="nav.employees">Medarbetare</a>
+        <a href="#avdelningar" data-i18n="nav.departments">Avdelningar</a>
+        <a href="https://jobb.agilarbetskraft.se/privacy-policy" target="_blank" rel="noreferrer" data-i18n="footer.privacy">Data och integritet</a>
+        <button type="button" data-cookie-open data-i18n="footer.cookies">Hantera cookies</button>
       </nav>
 
       <div class="footer-meta">
-        <div>Inloggning för medarbetare · <a href="https://app.teamtailor.com" target="_blank" rel="noreferrer">SSO</a></div>
-        <a href="https://jobb.agilarbetskraft.se/connect/login" target="_blank" rel="noreferrer">Logga in till Connect</a>
+        <div><span data-i18n="footer.employeeLogin">Inloggning för medarbetare</span> · <a href="https://app.teamtailor.com" target="_blank" rel="noreferrer">SSO</a></div>
+        <a href="https://jobb.agilarbetskraft.se/connect/login" target="_blank" rel="noreferrer" data-i18n="footer.connectLogin">Logga in till Connect</a>
       </div>
 
       <div class="footer-bottom">
         <span>© 2026 Agil Arbetskraft</span>
-        <a href="https://www.teamtailor.com" target="_blank" rel="noreferrer">Karriärsida från Teamtailor</a>
+        <a href="https://www.teamtailor.com" target="_blank" rel="noreferrer" data-i18n="footer.teamtailor">Karriärsida från Teamtailor</a>
       </div>
     </div>
   </footer>
 
-  <div class="menu-overlay" data-menu aria-hidden="true">
-    <div class="menu-topbar">
-      <button type="button" data-menu-close aria-label="Stäng menyn">×</button>
-      <span>KARRIÄRMENY</span>
-    </div>
-    <div class="menu-content">
-      <nav class="menu-links" aria-label="Karriärmeny">
-        <a href="#start" data-menu-link>Start</a>
-        <a href="#jobb" data-menu-link>Jobb</a>
-        <a href="#medarbetare" data-menu-link>Medarbetare</a>
-        <a href="#avdelningar" data-menu-link>Avdelningar</a>
-      </nav>
-      <div class="menu-logins">
-        <div><strong>Medarbetare</strong><a href="https://app.teamtailor.com" target="_blank" rel="noreferrer">Logga in som medarbetare ↗</a></div>
-        <div><strong>Kandidat</strong><a href="https://jobb.agilarbetskraft.se/connect/login" target="_blank" rel="noreferrer">Logga in i Connect ↗</a></div>
-      </div>
-    </div>
-  </div>
-
-  <button class="chat-button" type="button" data-chat aria-label="Öppna chatten">
+  <button class="chat-button" type="button" data-chat aria-label="Öppna chatten" data-i18n-aria="chat.open">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14v9H9l-4 3V6Z"/></svg>
   </button>
 
   <div class="cookie-banner" data-cookie-banner hidden>
-    <div><strong>Cookies</strong><p>Vi använder nödvändiga cookies för att sidan ska fungera korrekt.</p></div>
-    <div><button type="button" data-cookie-choice="necessary">Endast nödvändiga</button><button class="cookie-accept" type="button" data-cookie-choice="all">Godkänn alla</button></div>
+    <div><strong data-i18n="cookies.title">Cookies</strong><p data-i18n="cookies.description">Vi använder nödvändiga cookies för att sidan ska fungera korrekt.</p></div>
+    <div><button type="button" data-cookie-choice="necessary" data-i18n="cookies.necessary">Endast nödvändiga</button><button class="cookie-accept" type="button" data-cookie-choice="all" data-i18n="cookies.all">Godkänn alla</button></div>
   </div>
 
   <div class="toast" data-toast role="status" aria-live="polite"></div>

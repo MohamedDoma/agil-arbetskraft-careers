@@ -60,36 +60,85 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(20px, 2.7vw, 44px);
+  gap: clamp(16px, 1.7vw, 30px);
 }
-.desktop-nav a {
+.desktop-nav > a,
+.career-menu-toggle {
   position: relative;
-  padding: 22px 0 20px;
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: #111;
-  font-size: .9rem;
+  font-size: .84rem;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: .05em;
+  letter-spacing: .045em;
   text-transform: uppercase;
   white-space: nowrap;
+  cursor: pointer;
   transition: color .2s ease;
 }
-.desktop-nav a::after {
+.desktop-nav > a::after,
+.career-menu-toggle::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 12px;
+  bottom: 8px;
   height: 2px;
   border-radius: 999px;
   background: var(--orange-dark);
   transform: scaleX(0);
   transition: transform .2s ease;
 }
-.desktop-nav a:hover,
-.desktop-nav a.is-active { color: var(--orange-dark); }
-.desktop-nav a:hover::after,
-.desktop-nav a.is-active::after { transform: scaleX(1); }
+.desktop-nav > a:hover,
+.career-menu-toggle:hover,
+.career-menu-dropdown.is-open .career-menu-toggle { color: var(--orange-dark); }
+.desktop-nav > a:hover::after,
+.career-menu-toggle:hover::after,
+.career-menu-dropdown.is-open .career-menu-toggle::after { transform: scaleX(1); }
+.career-menu-dropdown { position: relative; display: inline-flex; align-items: center; }
+.career-menu-toggle svg { width: 11px; fill: none; stroke: currentColor; stroke-width: 1.8; transition: transform .2s ease; }
+.career-menu-dropdown.is-open .career-menu-toggle svg { transform: rotate(180deg); }
+.career-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: -18px;
+  width: 244px;
+  display: grid;
+  gap: 3px;
+  padding: 12px;
+  border: 1px solid rgba(23, 32, 42, .10);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .99);
+  box-shadow: 0 20px 50px rgba(23, 32, 42, .16);
+  backdrop-filter: blur(18px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity .2s ease, visibility .2s ease, transform .2s ease;
+}
+.career-menu-dropdown.is-open .career-menu-panel { opacity: 1; visibility: visible; transform: translateY(0); }
+.career-menu-panel a {
+  min-height: 43px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 12px;
+  color: var(--ink);
+  font-size: .92rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.career-menu-panel a:hover,
+.career-menu-panel a.is-active { background: var(--cream); color: var(--orange-dark); }
+.career-menu-separator { height: 1px; margin: 6px 5px; background: var(--line); }
+
 .header-actions { justify-self: end; display: flex; align-items: center; gap: 10px; }
 .language-toggle {
   min-width: 64px;
@@ -117,6 +166,7 @@ img { display: block; max-width: 100%; }
 }
 .language-toggle:focus-visible,
 .mobile-menu-button:focus-visible,
+.career-menu-toggle:focus-visible,
 .header-connect:focus-visible { outline: 3px solid rgba(250, 166, 50, .34); outline-offset: 2px; }
 .language-flag { font-size: 1rem; line-height: 1; }
 .language-code { line-height: 1; }
@@ -177,6 +227,7 @@ img { display: block; max-width: 100%; }
 .mobile-menu a.is-active { background: var(--cream); color: var(--orange-dark); }
 .mobile-menu .mobile-connect { justify-content: center; margin-top: 6px; background: var(--orange-dark); color: #fff; }
 .mobile-menu .mobile-connect:hover { background: #df5934; color: #fff; }
+.mobile-menu-section-title { margin: 9px 8px 3px; padding: 12px 8px 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: .72rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 
 /* Hero and job cards */
 .career-hero {
@@ -259,7 +310,7 @@ img { display: block; max-width: 100%; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 /* Tablet: collapse header before it becomes cramped */
-@media (max-width: 1080px) {
+@media (max-width: 1180px) {
   html { scroll-padding-top: 88px; }
   .header-shell { grid-template-columns: minmax(0, 1fr) auto; gap: 14px; }
   .desktop-nav { display: none; }
@@ -348,117 +399,3 @@ img { display: block; max-width: 100%; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
-
-/* Career menu bar — kept separate so the original header design stays unchanged */
-.career-menu-bar {
-  position: sticky;
-  top: 88px;
-  z-index: 70;
-  padding-top: 8px;
-  pointer-events: none;
-}
-.career-menu-bar__shell {
-  width: min(1420px, calc(100% - 24px));
-  min-height: 52px;
-  margin-inline: auto;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 20px;
-  padding: 6px 10px 6px 16px;
-  border: 1px solid rgba(23, 32, 42, .12);
-  border-radius: 18px;
-  background: rgba(23, 32, 42, .97);
-  color: #fff;
-  box-shadow: 0 12px 30px rgba(23, 32, 42, .14);
-  backdrop-filter: blur(18px);
-  pointer-events: auto;
-}
-.career-menu-trigger {
-  justify-self: start;
-  min-height: 40px;
-  display: inline-flex;
-  align-items: center;
-  gap: 11px;
-  padding: 0 13px;
-  border: 0;
-  border-radius: 12px;
-  background: transparent;
-  color: #fff;
-  font-size: .76rem;
-  font-weight: 800;
-  letter-spacing: .10em;
-  cursor: pointer;
-  transition: background .2s ease, color .2s ease;
-}
-.career-menu-trigger:hover { background: rgba(255, 255, 255, .10); color: var(--orange); }
-.career-menu-trigger:focus-visible,
-.career-menu-close:focus-visible { outline: 3px solid rgba(250, 166, 50, .45); outline-offset: 2px; }
-.career-menu-trigger__icon { width: 20px; display: grid; gap: 4px; }
-.career-menu-trigger__icon i { width: 20px; height: 2px; display: block; border-radius: 999px; background: currentColor; }
-.career-menu-bar__brand { justify-self: center; color: rgba(255, 255, 255, .86); font-size: .88rem; font-weight: 700; letter-spacing: .035em; }
-.career-menu-bar__connect { justify-self: end; min-height: 38px; display: inline-flex; align-items: center; justify-content: center; padding: 0 15px; border-radius: 10px; color: #fff; font-size: .78rem; font-weight: 800; }
-.career-menu-bar__connect:hover { background: var(--orange-dark); }
-
-.career-menu-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 140;
-  padding: 26px clamp(24px, 5vw, 82px) 54px;
-  background:
-    radial-gradient(circle at 12% 12%, rgba(250, 166, 50, .15), transparent 26%),
-    radial-gradient(circle at 86% 80%, rgba(242, 104, 62, .12), transparent 28%),
-    #11181f;
-  color: #fff;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-12px);
-  transition: opacity .24s ease, visibility .24s ease, transform .24s ease;
-  overflow-y: auto;
-}
-.career-menu-overlay.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
-.career-menu-overlay__top { min-height: 52px; display: flex; align-items: center; gap: 14px; font-size: .8rem; font-weight: 800; letter-spacing: .11em; }
-.career-menu-close { position: relative; width: 42px; height: 42px; border: 0; border-radius: 50%; background: rgba(255,255,255,.08); color: #fff; cursor: pointer; }
-.career-menu-close:hover { background: rgba(255,255,255,.14); }
-.career-menu-close span { position: absolute; left: 11px; top: 20px; width: 20px; height: 2px; border-radius: 999px; background: currentColor; }
-.career-menu-close span:first-child { transform: rotate(45deg); }
-.career-menu-close span:last-child { transform: rotate(-45deg); }
-.career-menu-overlay__content { min-height: calc(100vh - 140px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, .45fr); align-items: start; gap: clamp(50px, 9vw, 150px); padding: clamp(54px, 9vh, 100px) clamp(0px, 10vw, 170px) 30px; }
-.career-menu-nav { display: grid; align-content: start; gap: 12px; }
-.career-menu-nav a { width: fit-content; position: relative; color: #fff; font-size: clamp(2.65rem, 5.6vw, 5.9rem); font-weight: 800; line-height: .98; letter-spacing: -.045em; transition: color .2s ease, transform .2s ease; }
-.career-menu-nav a::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 100%; height: 4px; border-radius: 999px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .22s ease; }
-.career-menu-nav a:hover,
-.career-menu-nav a.is-active { color: var(--orange); transform: translateX(8px); }
-.career-menu-nav a:hover::after,
-.career-menu-nav a.is-active::after { transform: scaleX(1); }
-.career-menu-overlay__aside { display: grid; gap: 30px; padding-top: 12px; }
-.career-menu-overlay__aside a { display: grid; gap: 5px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.15); }
-.career-menu-overlay__aside strong { color: #fff; font-size: 1.18rem; }
-.career-menu-overlay__aside span { color: rgba(255,255,255,.62); }
-.career-menu-overlay__aside a:hover strong { color: var(--orange); }
-
-@media (max-width: 1080px) {
-  .career-menu-bar { top: 88px; }
-}
-
-@media (max-width: 760px) {
-  html { scroll-padding-top: 144px; }
-  .career-menu-bar { top: 80px; padding-top: 6px; }
-  .career-menu-bar__shell { width: calc(100% - 16px); min-height: 48px; grid-template-columns: 1fr auto; gap: 10px; padding: 4px 7px 4px 8px; border-radius: 16px; }
-  .career-menu-bar__brand { display: none; }
-  .career-menu-trigger { min-height: 40px; padding-inline: 10px; font-size: .7rem; }
-  .career-menu-bar__connect { min-height: 38px; padding-inline: 13px; }
-  .career-menu-overlay { padding: 18px 20px 36px; }
-  .career-menu-overlay__content { min-height: auto; grid-template-columns: 1fr; gap: 54px; padding: 54px 14px 24px; }
-  .career-menu-nav a { font-size: clamp(2.5rem, 13vw, 4.6rem); }
-  .career-menu-overlay__aside { padding-top: 0; }
-}
-
-@media (max-width: 430px) {
-  .career-menu-bar { top: 78px; }
-  .career-menu-bar__connect { font-size: .72rem; }
-}
-
-/* Keep section anchors clear of the unchanged sticky header and the career bar. */
-html { scroll-padding-top: 156px; }
-@media (max-width: 760px) { html { scroll-padding-top: 144px; } }

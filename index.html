@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Hitta lediga tjänster hos Agil Arbetskraft inom IT, lager och logistik, bygg, transport samt flytt och montage." data-i18n-content="meta.description">
   <meta name="theme-color" content="#FAA632">
-  <title>Jobb hos Agil Arbetskraftt</title>
+  <title>Jobb hos Agil Arbetskraft</title>
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,15 +15,15 @@
 <body id="start">
   <header class="site-header" data-header>
     <div class="header-shell">
-      <a class="brand" href="#start" aria-label="Agil Arbetskraft – startsida" data-i18n-aria="brand.home">
+      <a class="brand" href="https://agil-pro.vercel.app/" aria-label="Agil Arbetskraft – home" data-i18n-aria="brand.home">
         <img src="assets/logo.svg" alt="Agil Arbetskraft">
       </a>
 
       <nav class="desktop-nav" aria-label="Huvudmeny" data-i18n-aria="nav.mainLabel">
-        <a class="is-active" href="#start" data-nav-link data-i18n="nav.home">Start</a>
-        <a href="#jobb" data-nav-link data-i18n="nav.jobs">Jobb</a>
-        <a href="#medarbetare" data-nav-link data-i18n="nav.employees">Medarbetare</a>
-        <a href="#avdelningar" data-nav-link data-i18n="nav.departments">Avdelningar</a>
+        <a href="https://agil-pro.vercel.app/" data-i18n="header.home">Home</a>
+        <a href="https://agil-pro.vercel.app/services" data-i18n="header.services">Services</a>
+        <a href="https://agil-pro.vercel.app/about" data-i18n="header.about">About</a>
+        <a href="https://agil-pro.vercel.app/contact" data-i18n="header.contact">Contact</a>
       </nav>
 
       <div class="header-actions">
@@ -38,14 +38,52 @@
       </div>
 
       <nav class="mobile-menu" data-mobile-menu aria-label="Mobilmeny" aria-hidden="true" data-i18n-aria="nav.mobileLabel">
-        <a class="is-active" href="#start" data-nav-link data-mobile-menu-link data-i18n="nav.home">Start</a>
-        <a href="#jobb" data-nav-link data-mobile-menu-link data-i18n="nav.jobs">Jobb</a>
-        <a href="#medarbetare" data-nav-link data-mobile-menu-link data-i18n="nav.employees">Medarbetare</a>
-        <a href="#avdelningar" data-nav-link data-mobile-menu-link data-i18n="nav.departments">Avdelningar</a>
+        <a href="https://agil-pro.vercel.app/" data-mobile-menu-link data-i18n="header.home">Home</a>
+        <a href="https://agil-pro.vercel.app/services" data-mobile-menu-link data-i18n="header.services">Services</a>
+        <a href="https://agil-pro.vercel.app/about" data-mobile-menu-link data-i18n="header.about">About</a>
+        <a href="https://agil-pro.vercel.app/contact" data-mobile-menu-link data-i18n="header.contact">Contact</a>
         <a class="mobile-connect" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer" data-i18n="common.connect">Connecta</a>
       </nav>
     </div>
   </header>
+
+  <div class="career-menu-bar" data-career-bar>
+    <div class="career-menu-bar__shell">
+      <button class="career-menu-trigger" type="button" data-career-menu-toggle aria-expanded="false" aria-controls="career-menu-overlay" aria-label="Öppna karriärmenyn" data-i18n-aria="career.open">
+        <span class="career-menu-trigger__icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span data-i18n="career.label">KARRIÄRMENY</span>
+      </button>
+      <span class="career-menu-bar__brand">Agil Arbetskraft</span>
+      <a class="career-menu-bar__connect" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer" data-i18n="common.connect">Connecta</a>
+    </div>
+  </div>
+
+  <div class="career-menu-overlay" id="career-menu-overlay" data-career-menu aria-hidden="true">
+    <div class="career-menu-overlay__top">
+      <button class="career-menu-close" type="button" data-career-menu-close aria-label="Stäng karriärmenyn" data-i18n-aria="career.close">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+      <span data-i18n="career.label">KARRIÄRMENY</span>
+    </div>
+    <div class="career-menu-overlay__content">
+      <nav class="career-menu-nav" aria-label="Karriärmeny" data-i18n-aria="career.navLabel">
+        <a class="is-active" href="#start" data-nav-link data-career-menu-link data-i18n="nav.home">Start</a>
+        <a href="#jobb" data-nav-link data-career-menu-link data-i18n="nav.jobs">Jobb</a>
+        <a href="#medarbetare" data-nav-link data-career-menu-link data-i18n="nav.employees">Medarbetare</a>
+        <a href="#avdelningar" data-nav-link data-career-menu-link data-i18n="nav.departments">Avdelningar</a>
+      </nav>
+      <div class="career-menu-overlay__aside">
+        <a href="https://app.teamtailor.com" target="_blank" rel="noreferrer">
+          <strong data-i18n="career.employee">Medarbetare</strong>
+          <span data-i18n="career.employeeLogin">Logga in som medarbetare</span>
+        </a>
+        <a href="https://jobb.agilarbetskraft.se/connect/login" target="_blank" rel="noreferrer">
+          <strong data-i18n="career.candidate">Kandidat</strong>
+          <span data-i18n="career.candidateLogin">Logga in i Connect</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <main>
     <section class="career-hero" id="jobb">

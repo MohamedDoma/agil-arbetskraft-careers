@@ -21,3 +21,8 @@ The cookie choice buttons now reliably close the banner in Vercel and when testi
 Latest fix:
 - Replaced the handmade center mark with the official white Agil Arbetskraft symbol from the client brand package.
 - Reworked tablet/mobile responsive layout and moved the navigation collapse breakpoint to 1080px.
+
+## Header and career menu update
+- Preserved the original rounded Agil header design without changing its layout or styling.
+- Header logo, Home, Services, About and Contact now link to the main Agil Pro website.
+- The existing Start, Jobb, Medarbetare and Avdelningar links now live inside a separate career menu.

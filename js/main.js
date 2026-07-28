@@ -3,6 +3,9 @@
   const header = document.querySelector('[data-header]');
   const mobileMenu = document.querySelector('[data-mobile-menu]');
   const mobileToggle = document.querySelector('[data-mobile-menu-toggle]');
+  const careerMenu = document.querySelector('[data-career-menu]');
+  const careerMenuToggle = document.querySelector('[data-career-menu-toggle]');
+  const careerMenuClose = document.querySelector('[data-career-menu-close]');
   const toast = document.querySelector('[data-toast]');
   const cookieBanner = document.querySelector('[data-cookie-banner]');
   const languageButtons = [...document.querySelectorAll('[data-language-toggle]')];
@@ -11,7 +14,11 @@
     sv: {
       'meta.title': 'Jobb hos Agil Arbetskraft',
       'meta.description': 'Hitta lediga tjänster hos Agil Arbetskraft inom IT, lager och logistik, bygg, transport samt flytt och montage.',
-      'brand.home': 'Agil Arbetskraft – startsida',
+      'brand.home': 'Agil Arbetskraft – home',
+      'header.home': 'Home',
+      'header.services': 'Services',
+      'header.about': 'About',
+      'header.contact': 'Contact',
       'nav.mainLabel': 'Huvudmeny',
       'nav.mobileLabel': 'Mobilmeny',
       'nav.home': 'Start',
@@ -56,6 +63,14 @@
       'cookies.saved': 'Dina cookieinställningar har sparats.',
       'menu.open': 'Öppna menyn',
       'menu.close': 'Stäng menyn',
+      'career.label': 'KARRIÄRMENY',
+      'career.open': 'Öppna karriärmenyn',
+      'career.close': 'Stäng karriärmenyn',
+      'career.navLabel': 'Karriärmeny',
+      'career.employee': 'Medarbetare',
+      'career.employeeLogin': 'Logga in som medarbetare',
+      'career.candidate': 'Kandidat',
+      'career.candidateLogin': 'Logga in i Connect',
       'language.switch': 'Byt till engelska',
       'language.title': 'English',
       'language.code': 'EN',
@@ -65,6 +80,10 @@
       'meta.title': 'Jobs at Agil Arbetskraft',
       'meta.description': 'Find open roles at Agil Arbetskraft in IT, warehousing and logistics, construction, transport, moving and assembly.',
       'brand.home': 'Agil Arbetskraft – home',
+      'header.home': 'Home',
+      'header.services': 'Services',
+      'header.about': 'About',
+      'header.contact': 'Contact',
       'nav.mainLabel': 'Main navigation',
       'nav.mobileLabel': 'Mobile navigation',
       'nav.home': 'Home',
@@ -109,6 +128,14 @@
       'cookies.saved': 'Your cookie preferences have been saved.',
       'menu.open': 'Open menu',
       'menu.close': 'Close menu',
+      'career.label': 'CAREER MENU',
+      'career.open': 'Open the career menu',
+      'career.close': 'Close the career menu',
+      'career.navLabel': 'Career menu',
+      'career.employee': 'Employee',
+      'career.employeeLogin': 'Log in as an employee',
+      'career.candidate': 'Candidate',
+      'career.candidateLogin': 'Log in to Connect',
       'language.switch': 'Switch to Swedish',
       'language.title': 'Svenska',
       'language.code': 'SV',
@@ -154,6 +181,10 @@
       const isOpen = mobileMenu?.classList.contains('is-open');
       mobileToggle.setAttribute('aria-label', text(isOpen ? 'menu.close' : 'menu.open'));
     }
+    if (careerMenuToggle) {
+      const isOpen = careerMenu?.classList.contains('is-open');
+      careerMenuToggle.setAttribute('aria-label', text(isOpen ? 'career.close' : 'career.open'));
+    }
   };
 
   languageButtons.forEach((button) => {
@@ -168,6 +199,12 @@
     showToast.timer = setTimeout(() => toast.classList.remove('is-visible'), 2600);
   };
 
+  const updateBodyLock = () => {
+    const mobileOpen = Boolean(mobileMenu?.classList.contains('is-open') && window.innerWidth <= 1080);
+    const careerOpen = Boolean(careerMenu?.classList.contains('is-open'));
+    body.classList.toggle('is-locked', mobileOpen || careerOpen);
+  };
+
   const setMobileMenu = (open) => {
     if (!mobileMenu || !mobileToggle) return;
     mobileMenu.classList.toggle('is-open', open);
@@ -175,11 +212,32 @@
     mobileMenu.setAttribute('aria-hidden', String(!open));
     mobileToggle.setAttribute('aria-expanded', String(open));
     mobileToggle.setAttribute('aria-label', text(open ? 'menu.close' : 'menu.open'));
-    body.classList.toggle('is-locked', open && window.innerWidth <= 1080);
+    updateBodyLock();
+  };
+
+  const setCareerMenu = (open) => {
+    if (!careerMenu || !careerMenuToggle) return;
+    careerMenu.classList.toggle('is-open', open);
+    careerMenu.setAttribute('aria-hidden', String(!open));
+    careerMenuToggle.setAttribute('aria-expanded', String(open));
+    careerMenuToggle.setAttribute('aria-label', text(open ? 'career.close' : 'career.open'));
+    updateBodyLock();
+    if (open) careerMenuClose?.focus();
   };
 
   mobileToggle?.addEventListener('click', () => {
     setMobileMenu(!mobileMenu?.classList.contains('is-open'));
+  });
+
+  careerMenuToggle?.addEventListener('click', () => {
+    setMobileMenu(false);
+    setCareerMenu(!careerMenu?.classList.contains('is-open'));
+  });
+
+  careerMenuClose?.addEventListener('click', () => setCareerMenu(false));
+
+  document.querySelectorAll('[data-career-menu-link]').forEach((link) => {
+    link.addEventListener('click', () => setCareerMenu(false));
   });
 
   document.querySelectorAll('[data-mobile-menu-link]').forEach((link) => {
@@ -193,11 +251,14 @@
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') setMobileMenu(false);
+    if (event.key !== 'Escape') return;
+    setMobileMenu(false);
+    setCareerMenu(false);
   });
 
   window.addEventListener('resize', () => {
     if (window.innerWidth > 1080) setMobileMenu(false);
+    updateBodyLock();
   });
 
   const navLinks = [...document.querySelectorAll('[data-nav-link]')];

@@ -15,31 +15,18 @@
 <body id="start">
   <header class="site-header" data-header>
     <div class="header-shell">
+      <button class="mobile-menu-button" type="button" data-mobile-menu-toggle aria-label="Öppna karriärmenyn" aria-expanded="false" aria-controls="career-menu">
+        <span></span><span></span><span></span>
+      </button>
+
       <a class="brand" href="https://agil-pro.vercel.app/" aria-label="Agil Arbetskraft – startsida" data-i18n-aria="brand.home">
         <img src="assets/logo.svg" alt="Agil Arbetskraft">
       </a>
 
       <nav class="desktop-nav" aria-label="Huvudmeny" data-i18n-aria="nav.mainLabel">
-        <a href="https://agil-pro.vercel.app/" data-i18n="nav.websiteHome">Home</a>
+        <a href="https://agil-pro.vercel.app/" data-i18n="nav.siteHome">Home</a>
         <a href="https://agil-pro.vercel.app/services" data-i18n="nav.services">Services</a>
         <a href="https://agil-pro.vercel.app/about" data-i18n="nav.about">About</a>
-        <a href="https://agil-pro.vercel.app/contact" data-i18n="nav.contact">Contact</a>
-
-        <div class="career-menu-dropdown" data-career-menu>
-          <button class="career-menu-toggle" type="button" data-career-menu-toggle aria-expanded="false" aria-controls="career-menu-panel">
-            <span data-i18n="nav.careerMenu">Karriärmeny</span>
-            <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5"/></svg>
-          </button>
-          <div class="career-menu-panel" id="career-menu-panel" data-career-menu-panel aria-hidden="true">
-            <a class="is-active" href="#start" data-nav-link data-career-menu-link data-i18n="nav.home">Start</a>
-            <a href="#jobb" data-nav-link data-career-menu-link data-i18n="nav.jobs">Jobb</a>
-            <a href="#medarbetare" data-nav-link data-career-menu-link data-i18n="nav.employees">Medarbetare</a>
-            <a href="#avdelningar" data-nav-link data-career-menu-link data-i18n="nav.departments">Avdelningar</a>
-            <span class="career-menu-separator" aria-hidden="true"></span>
-            <a href="https://app.teamtailor.com" target="_blank" rel="noreferrer" data-i18n="nav.employeeLogin">Medarbetare login</a>
-            <a href="https://jobb.agilarbetskraft.se/connect/login" target="_blank" rel="noreferrer" data-i18n="nav.candidateLogin">Kandidat login</a>
-          </div>
-        </div>
       </nav>
 
       <div class="header-actions">
@@ -47,29 +34,39 @@
           <span class="language-flag" data-language-flag aria-hidden="true">🇬🇧</span>
           <span class="language-code" data-language-code>EN</span>
         </button>
-        <a class="header-connect" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer" data-i18n="common.connect">Connecta</a>
-        <button class="mobile-menu-button" type="button" data-mobile-menu-toggle aria-label="Öppna menyn" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+        <a class="header-connect" href="https://agil-pro.vercel.app/contact" data-i18n="nav.contact">Contact</a>
       </div>
+    </div>
+  </header>
 
-      <nav class="mobile-menu" data-mobile-menu aria-label="Mobilmeny" aria-hidden="true" data-i18n-aria="nav.mobileLabel">
-        <a href="https://agil-pro.vercel.app/" data-mobile-menu-link data-i18n="nav.websiteHome">Home</a>
-        <a href="https://agil-pro.vercel.app/services" data-mobile-menu-link data-i18n="nav.services">Services</a>
-        <a href="https://agil-pro.vercel.app/about" data-mobile-menu-link data-i18n="nav.about">About</a>
-        <a href="https://agil-pro.vercel.app/contact" data-mobile-menu-link data-i18n="nav.contact">Contact</a>
+  <nav class="career-overlay" id="career-menu" data-mobile-menu aria-label="Karriärmeny" aria-hidden="true" data-i18n-aria="nav.careerMenuLabel">
+    <div class="career-overlay__topbar">
+      <button class="career-overlay__close" type="button" data-menu-close aria-label="Stäng menyn" data-i18n-aria="menu.close">
+        <span></span><span></span>
+      </button>
+      <span class="career-overlay__label" data-i18n="nav.careerMenuTitle">KARRIÄRMENY</span>
+    </div>
 
-        <div class="mobile-menu-section-title" data-i18n="nav.careerMenu">Karriärmeny</div>
-        <a class="is-active" href="#start" data-nav-link data-mobile-menu-link data-i18n="nav.home">Start</a>
+    <div class="career-overlay__content">
+      <div class="career-overlay__main-links">
+        <a href="#start" data-nav-link data-mobile-menu-link data-i18n="nav.home">Start</a>
         <a href="#jobb" data-nav-link data-mobile-menu-link data-i18n="nav.jobs">Jobb</a>
         <a href="#medarbetare" data-nav-link data-mobile-menu-link data-i18n="nav.employees">Medarbetare</a>
         <a href="#avdelningar" data-nav-link data-mobile-menu-link data-i18n="nav.departments">Avdelningar</a>
-        <a href="https://app.teamtailor.com" target="_blank" rel="noreferrer" data-mobile-menu-link data-i18n="nav.employeeLogin">Medarbetare login</a>
-        <a href="https://jobb.agilarbetskraft.se/connect/login" target="_blank" rel="noreferrer" data-mobile-menu-link data-i18n="nav.candidateLogin">Kandidat login</a>
-        <a class="mobile-connect" href="https://jobb.agilarbetskraft.se/connect" target="_blank" rel="noreferrer" data-mobile-menu-link data-i18n="common.connect">Connecta</a>
-      </nav>
+      </div>
+
+      <div class="career-overlay__login-links">
+        <a href="https://app.teamtailor.com" target="_blank" rel="noreferrer" data-mobile-menu-link>
+          <strong data-i18n="nav.employeeTitle">Medarbetare</strong>
+          <span data-i18n="nav.employeeLoginSubtitle">Logga in som medarbetare</span>
+        </a>
+        <a href="https://jobb.agilarbetskraft.se/connect/login" target="_blank" rel="noreferrer" data-mobile-menu-link>
+          <strong data-i18n="nav.candidateTitle">Kandidat</strong>
+          <span data-i18n="nav.candidateLoginSubtitle">Logga in i Connect</span>
+        </a>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <main>
     <section class="career-hero" id="jobb">
@@ -127,7 +124,7 @@
         </div>
 
         <div class="future-mark reveal" aria-hidden="true">
-          <img src="assets/symbol-white.svg" alt="">
+          <img src="assets/symbol-orange.svg" alt="">
         </div>
       </div>
     </section>

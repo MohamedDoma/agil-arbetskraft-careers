@@ -1,15 +1,15 @@
 # Agil Arbetskraft Careers
 
-One-page careers website prepared for Vercel.
+Static one-page careers website, ready for Vercel.
 
-## Header
+## Structure
+- `index.html`
+- `css/style.css`
+- `js/main.js`
+- `assets/`
+- `vercel.json`
 
-The website uses one unified header containing:
-- Agil logo linked to the main Agil website
-- Home, Services, About, and Contact links
-- A Career menu dropdown with the careers-page links and login links
-- Language switcher and Connect button
+The single header keeps the Agil navigation and includes a left-aligned hamburger button. The career menu opens as a full-screen black overlay with the original Swedish career links and login links.
 
-## Deploy
 
-This is a static HTML/CSS/JavaScript project. Import the repository in Vercel with Framework Preset set to `Other`.
+Latest update: aligned the header Contact CTA, changed the future-opportunities section to a warm cream background, and added a two-tone orange symbol.

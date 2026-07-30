@@ -3,9 +3,7 @@
   const header = document.querySelector('[data-header]');
   const mobileMenu = document.querySelector('[data-mobile-menu]');
   const mobileToggle = document.querySelector('[data-mobile-menu-toggle]');
-  const careerMenu = document.querySelector('[data-career-menu]');
-  const careerMenuToggle = document.querySelector('[data-career-menu-toggle]');
-  const careerMenuPanel = document.querySelector('[data-career-menu-panel]');
+  const menuClose = document.querySelector('[data-menu-close]');
   const toast = document.querySelector('[data-toast]');
   const cookieBanner = document.querySelector('[data-cookie-banner]');
   const languageButtons = [...document.querySelectorAll('[data-language-toggle]')];
@@ -17,17 +15,22 @@
       'brand.home': 'Agil Arbetskraft – startsida',
       'nav.mainLabel': 'Huvudmeny',
       'nav.mobileLabel': 'Mobilmeny',
-      'nav.websiteHome': 'Home',
+      'nav.careerMenuLabel': 'Karriärmeny',
+      'nav.careerMenuTitle': 'Karriärmeny',
+      'nav.siteHome': 'Home',
       'nav.services': 'Services',
       'nav.about': 'About',
       'nav.contact': 'Contact',
-      'nav.careerMenu': 'Karriärmeny',
+      'nav.employeeLogin': 'Medarbetare login',
+      'nav.candidateLogin': 'Kandidat login',
+      'nav.employeeTitle': 'Medarbetare',
+      'nav.employeeLoginSubtitle': 'Logga in som medarbetare',
+      'nav.candidateTitle': 'Kandidat',
+      'nav.candidateLoginSubtitle': 'Logga in i Connect',
       'nav.home': 'Start',
       'nav.jobs': 'Jobb',
       'nav.employees': 'Medarbetare',
       'nav.departments': 'Avdelningar',
-      'nav.employeeLogin': 'Medarbetare login',
-      'nav.candidateLogin': 'Kandidat login',
       'common.connect': 'Connecta',
       'hero.eyebrow': 'JOBBA MED OSS',
       'hero.title': 'Vilken tjänst<br><em>söker du?</em>',
@@ -77,17 +80,22 @@
       'brand.home': 'Agil Arbetskraft – home',
       'nav.mainLabel': 'Main navigation',
       'nav.mobileLabel': 'Mobile navigation',
-      'nav.websiteHome': 'Home',
+      'nav.careerMenuLabel': 'Career menu',
+      'nav.careerMenuTitle': 'Career menu',
+      'nav.siteHome': 'Home',
       'nav.services': 'Services',
       'nav.about': 'About',
       'nav.contact': 'Contact',
-      'nav.careerMenu': 'Career menu',
+      'nav.employeeLogin': 'Employee login',
+      'nav.candidateLogin': 'Candidate login',
+      'nav.employeeTitle': 'Employee',
+      'nav.employeeLoginSubtitle': 'Log in as an employee',
+      'nav.candidateTitle': 'Candidate',
+      'nav.candidateLoginSubtitle': 'Log in to Connect',
       'nav.home': 'Start',
       'nav.jobs': 'Jobs',
       'nav.employees': 'Employees',
       'nav.departments': 'Departments',
-      'nav.employeeLogin': 'Employee login',
-      'nav.candidateLogin': 'Candidate login',
       'common.connect': 'Connect',
       'hero.eyebrow': 'WORK WITH US',
       'hero.title': 'Which role<br><em>are you looking for?</em>',
@@ -185,57 +193,34 @@
     showToast.timer = setTimeout(() => toast.classList.remove('is-visible'), 2600);
   };
 
-  const setCareerMenu = (open) => {
-    if (!careerMenu || !careerMenuToggle || !careerMenuPanel) return;
-    careerMenu.classList.toggle('is-open', open);
-    careerMenuToggle.setAttribute('aria-expanded', String(open));
-    careerMenuPanel.setAttribute('aria-hidden', String(!open));
-  };
-
-  careerMenuToggle?.addEventListener('click', () => {
-    setCareerMenu(!careerMenu?.classList.contains('is-open'));
-  });
-
-  document.querySelectorAll('[data-career-menu-link]').forEach((link) => {
-    link.addEventListener('click', () => setCareerMenu(false));
-  });
+  let menuWasOpenedBy = null;
 
   const setMobileMenu = (open) => {
     if (!mobileMenu || !mobileToggle) return;
     mobileMenu.classList.toggle('is-open', open);
-    mobileToggle.classList.toggle('is-open', open);
     mobileMenu.setAttribute('aria-hidden', String(!open));
     mobileToggle.setAttribute('aria-expanded', String(open));
     mobileToggle.setAttribute('aria-label', text(open ? 'menu.close' : 'menu.open'));
-    body.classList.toggle('is-locked', open && window.innerWidth <= 1180);
+    body.classList.toggle('is-locked', open);
+
+    if (open) {
+      menuWasOpenedBy = document.activeElement;
+      window.setTimeout(() => menuClose?.focus(), 30);
+    } else if (menuWasOpenedBy instanceof HTMLElement) {
+      window.setTimeout(() => menuWasOpenedBy.focus(), 30);
+      menuWasOpenedBy = null;
+    }
   };
 
-  mobileToggle?.addEventListener('click', () => {
-    setMobileMenu(!mobileMenu?.classList.contains('is-open'));
-  });
+  mobileToggle?.addEventListener('click', () => setMobileMenu(true));
+  menuClose?.addEventListener('click', () => setMobileMenu(false));
 
   document.querySelectorAll('[data-mobile-menu-link]').forEach((link) => {
     link.addEventListener('click', () => setMobileMenu(false));
   });
 
-  document.addEventListener('click', (event) => {
-    if (mobileMenu?.classList.contains('is-open') && !header?.contains(event.target)) {
-      setMobileMenu(false);
-    }
-    if (careerMenu?.classList.contains('is-open') && !careerMenu.contains(event.target)) {
-      setCareerMenu(false);
-    }
-  });
-
   document.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape') return;
-    setMobileMenu(false);
-    setCareerMenu(false);
-  });
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 1180) setMobileMenu(false);
-    if (window.innerWidth <= 1180) setCareerMenu(false);
+    if (event.key === 'Escape') setMobileMenu(false);
   });
 
   const navLinks = [...document.querySelectorAll('[data-nav-link]')];

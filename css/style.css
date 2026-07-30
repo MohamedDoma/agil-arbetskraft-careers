@@ -87,9 +87,11 @@ img { display: block; max-width: 100%; }
   transition: transform .2s ease;
 }
 .desktop-nav a:hover,
-.desktop-nav a.is-active { color: var(--orange-dark); }
+.desktop-nav a.is-active,
+.desktop-nav a.job-vacancies-link { color: var(--orange-dark); }
 .desktop-nav a:hover::after,
-.desktop-nav a.is-active::after { transform: scaleX(1); }
+.desktop-nav a.is-active::after,
+.desktop-nav a.job-vacancies-link::after { transform: scaleX(1); }
 .header-actions { justify-self: end; display: flex; align-items: center; gap: 10px; }
 .language-toggle {
   min-width: 70px;
@@ -240,13 +242,39 @@ img { display: block; max-width: 100%; }
 .career-card { position: relative; grid-column: span 2; min-width: 0; overflow: hidden; border-radius: 22px; background: #181f25; box-shadow: 0 14px 34px rgba(23, 32, 42, .12); transition: transform .28s ease, box-shadow .28s ease; }
 .career-card:nth-child(4) { grid-column: 2 / span 2; }
 .career-card:nth-child(5) { grid-column: 4 / span 2; }
-.career-card::after { content: ""; position: absolute; inset: 0; border: 2px solid transparent; border-radius: inherit; pointer-events: none; transition: border-color .25s ease; }
-.career-card img { width: 100%; aspect-ratio: 1.49 / 1; object-fit: cover; }
-.career-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
-.career-card:hover::after { border-color: var(--orange); }
-.card-accent { position: absolute; left: 18px; top: 18px; width: 10px; height: 10px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 7px rgba(250,166,50,.18); }
-.card-action { position: absolute; right: 16px; top: 16px; min-height: 36px; display: inline-flex; align-items: center; gap: 7px; padding: 0 13px; border-radius: 999px; background: rgba(255,255,255,.94); color: var(--ink); font-size: .78rem; font-weight: 800; opacity: 0; transform: translateY(-6px); transition: opacity .22s ease, transform .22s ease; }
-.career-card:hover .card-action { opacity: 1; transform: translateY(0); }
+.career-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 35%, rgba(8, 14, 18, .12) 55%, rgba(8, 14, 18, .88) 100%);
+}
+.career-card::after { content: ""; position: absolute; inset: 0; z-index: 4; border: 2px solid transparent; border-radius: inherit; pointer-events: none; transition: border-color .25s ease; }
+.career-card img { width: 100%; aspect-ratio: 1.49 / 1; object-fit: cover; transition: transform .38s ease, filter .38s ease; }
+.career-card:hover,
+.career-card:focus-visible { transform: translateY(-8px); box-shadow: var(--shadow); outline: none; }
+.career-card:hover img,
+.career-card:focus-visible img { transform: scale(1.025); filter: saturate(1.04); }
+.career-card:hover::after,
+.career-card:focus-visible::after { border-color: var(--orange); }
+.card-accent { position: absolute; z-index: 3; left: 18px; top: 18px; width: 10px; height: 10px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 7px rgba(250,166,50,.18); }
+.card-title {
+  position: absolute;
+  z-index: 3;
+  left: 22px;
+  right: 22px;
+  bottom: 20px;
+  color: #fff;
+  font-size: clamp(1.05rem, 1.45vw, 1.34rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -.02em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .48);
+}
+.card-action { position: absolute; z-index: 3; right: 16px; top: 16px; min-height: 36px; display: inline-flex; align-items: center; gap: 7px; padding: 0 13px; border-radius: 999px; background: rgba(255,255,255,.96); color: var(--ink); font-size: .78rem; font-weight: 800; opacity: 0; transform: translateY(-6px); transition: opacity .22s ease, transform .22s ease; }
+.career-card:hover .card-action,
+.career-card:focus-visible .card-action { opacity: 1; transform: translateY(0); }
 .card-action b { color: var(--orange-dark); }
 
 /* Future opportunities */
@@ -351,6 +379,7 @@ img { display: block; max-width: 100%; }
   .career-card { border-radius: 18px; }
   .career-card img { aspect-ratio: 1.35 / 1; }
   .card-accent { left: 14px; top: 14px; }
+  .card-title { left: 17px; right: 17px; bottom: 16px; font-size: 1.05rem; }
   .card-action { right: 12px; top: 12px; min-height: 32px; padding: 0 10px; opacity: 1; transform: none; font-size: .72rem; }
   .future-inner { min-height: auto; grid-template-columns: 1fr; gap: 42px; padding-block: 64px; }
   .future-copy { max-width: none; }

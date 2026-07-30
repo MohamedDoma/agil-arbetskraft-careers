@@ -17,3 +17,5 @@ Latest update: aligned the header Contact CTA, changed the future-opportunities 
 ## Latest UI fixes
 - Language flags use local SVG assets so they render consistently across browsers and operating systems.
 - The “Connecta för framtida möjligheter” button text and arrow are explicitly white.
+
+- The language control now shows the currently active language flag using inline SVG (Sweden for Swedish, United Kingdom for English), with no nested border or image box.

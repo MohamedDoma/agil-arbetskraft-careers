@@ -72,7 +72,7 @@
       'language.switch': 'Byt till engelska',
       'language.title': 'English',
       'language.code': 'EN',
-      'language.flag': '🇬🇧'
+      'language.flagSrc': 'assets/flag-gb.svg'
     },
     en: {
       'meta.title': 'Jobs at Agil Arbetskraft',
@@ -137,7 +137,7 @@
       'language.switch': 'Switch to Swedish',
       'language.title': 'Svenska',
       'language.code': 'SV',
-      'language.flag': '🇸🇪'
+      'language.flagSrc': 'assets/flag-se.svg'
     }
   };
 
@@ -172,7 +172,7 @@
       const code = button.querySelector('[data-language-code]');
       const flag = button.querySelector('[data-language-flag]');
       if (code) code.textContent = text('language.code');
-      if (flag) flag.textContent = text('language.flag');
+      if (flag) flag.setAttribute('src', text('language.flagSrc'));
     });
 
     if (mobileToggle) {

@@ -13,3 +13,7 @@ The single header keeps the Agil navigation and includes a left-aligned hamburge
 
 
 Latest update: aligned the header Contact CTA, changed the future-opportunities section to a warm cream background, and added a two-tone orange symbol.
+
+## Latest UI fixes
+- Language flags use local SVG assets so they render consistently across browsers and operating systems.
+- The “Connecta för framtida möjligheter” button text and arrow are explicitly white.
